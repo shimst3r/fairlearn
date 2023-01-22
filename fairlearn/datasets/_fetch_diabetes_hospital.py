@@ -4,10 +4,14 @@
 import pathlib
 
 from sklearn.datasets import fetch_openml
-from ._constants import _DOWNLOAD_DIRECTORY_NAME
+
 import fairlearn.utils._compatibility as compat
 
+from ._constants import _DOWNLOAD_DIRECTORY_NAME
+from ._dataset_utils import use_as_frame_explicitly
 
+
+@use_as_frame_explicitly
 def fetch_diabetes_hospital(
     *, cache=True, data_home=None, return_X_y=False
 ):

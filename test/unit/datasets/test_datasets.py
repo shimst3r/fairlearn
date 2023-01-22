@@ -12,11 +12,26 @@ from fairlearn.datasets import (
     fetch_credit_card,
     fetch_diabetes_hospital,
 )
+from fairlearn.exceptions import ImplicitUsageOfAsFrameWarning
 
 # =============================================
 
 
 class TestFairlearnDataset:
+    @pytest.mark.parametrize(
+        "fetch_function",
+        [
+            fetch_adult,
+            fetch_bank_marketing,
+            fetch_boston,
+            fetch_credit_card,
+            fetch_diabetes_hospital,
+        ],
+    )
+    def test_dataset_with_implicit_as_frame_raises_warnings(self, fetch_function):
+        with pytest.raises(ImplicitUsageOfAsFrameWarning):
+            fetch_function()
+
     @pytest.mark.parametrize("as_frame", [True, False])
     @pytest.mark.parametrize(
         "fetch_function",

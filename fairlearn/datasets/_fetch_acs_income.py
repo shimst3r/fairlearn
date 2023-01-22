@@ -7,10 +7,13 @@ import numpy as np
 import pandas as pd
 from sklearn.datasets import fetch_openml
 
-from ._constants import _DOWNLOAD_DIRECTORY_NAME
 import fairlearn.utils._compatibility as compat
 
+from ._constants import _DOWNLOAD_DIRECTORY_NAME
+from ._dataset_utils import use_as_frame_explicitly
 
+
+@use_as_frame_explicitly
 def fetch_acs_income(
     *,
     cache=True,

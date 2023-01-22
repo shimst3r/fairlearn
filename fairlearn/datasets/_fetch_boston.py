@@ -6,12 +6,14 @@ import warnings
 
 from sklearn.datasets import fetch_openml
 
+import fairlearn.utils._compatibility as compat
 from fairlearn.exceptions import DataFairnessWarning
 
 from ._constants import _DOWNLOAD_DIRECTORY_NAME
-import fairlearn.utils._compatibility as compat
+from ._dataset_utils import use_as_frame_explicitly
 
 
+@use_as_frame_explicitly
 def fetch_boston(
     *, cache=True, data_home=None, as_frame=False, return_X_y=False, warn=True
 ):
